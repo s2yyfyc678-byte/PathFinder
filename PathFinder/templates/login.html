@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="app-shell">
+        <header class="navbar">
+            <div class="brand">
+                <span class="brand-mark">✦</span>
+                <div>
+                    <strong>Хүслэн AI</strong>
+                    <small>Career & study guide</small>
+                </div>
+            </div>
+            <nav>
+                <a href="/">Home</a>
+                <a href="/quiz">Quiz</a>
+                <a href="/chatbot">Chatbot</a>
+            </nav>
+        </header>
+        <main class="page-section">
+            <div class="auth-card">
+                <h1>Welcome back</h1>
+                <p>Log in to continue your path with Хүслэн.</p>
+                <form method="post" class="auth-form">
+                    <label>Email</label>
+                    <input type="email" name="email" required>
+                    <label>Password</label>
+                    <input type="password" name="password" required>
+                    <button type="submit" class="primary-btn">Log in</button>
+                    <a href="/register" class="secondary-btn">Create account</a>
+                </form>
+                {% if error %}<p class="error-text">{{ error }}</p>{% endif %}
+            </div>
+        </main>
+    </div>
+</body>
+</html>

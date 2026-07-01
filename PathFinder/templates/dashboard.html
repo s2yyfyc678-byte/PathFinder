@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="app-shell">
+        <header class="navbar">
+            <div class="brand">
+                <span class="brand-mark">✦</span>
+                <div>
+                    <strong>Хүслэн AI</strong>
+                    <small>Career & study guide</small>
+                </div>
+            </div>
+            <nav>
+                <a href="/">Home</a>
+                <a href="/dashboard">Dashboard</a>
+                <a href="/quiz">Quiz</a>
+                <a href="/chatbot">Chatbot</a>
+                <a href="/logout">Logout</a>
+            </nav>
+        </header>
+        <main class="page-section">
+            <section class="hero-card">
+                <div>
+                    <span class="eyebrow">Welcome back</span>
+                    <h1>Hi{% if user %}, {{ user.fullname }}{% endif %}.</h1>
+                    <p>Your next step is ready. Try the quiz, ask the AI, and explore ideas that fit your goals.</p>
+                    <div class="cta-row">
+                        <a class="primary-btn" href="/quiz">Take the quiz</a>
+                        <a class="secondary-btn" href="/chatbot">Ask the AI</a>
+                    </div>
+                </div>
+                <div class="hero-panel">
+                    <div class="mini-card">🧪 Personalized quiz path</div>
+                    <div class="mini-card">💡 Career matching ideas</div>
+                    <div class="mini-card">🤖 Helpful AI support</div>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>

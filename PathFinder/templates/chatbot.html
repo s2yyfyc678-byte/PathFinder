@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="app-shell">
+        <header class="navbar">
+                <div class="brand">
+                <span class="brand-mark">Х</span>
+                <div>
+                    <strong>Хүслэн AI</strong>
+                    <small>Career & study guide</small>
+                </div>
+            </div>
+            <nav>
+                <a href="/">Home</a>
+                <a href="/dashboard">Dashboard</a>
+                <a href="/quiz">Quiz</a>
+            </nav>
+        </header>
+
+        <main class="page-section">
+            <div class="chat-shell">
+                <div class="chat-header">
+                    <div>
+                        <h1 style="margin: 0;">AI Career Companion</h1>
+                        <p style="margin: 4px 0 0; color: #5d6a83;">Ask me anything in English or Mongolian.</p>
+                    </div>
+                    <div class="language-toggle" role="group" aria-label="Language selector">
+                        <button type="button" class="lang-btn active" data-language="en">EN</button>
+                        <button type="button" class="lang-btn" data-language="mn">MN</button>
+                    </div>
+                </div>
+                <div id="chat-section" class="chat-container">
+                    <div id="chat-box">
+                        <div class="bot-message">Hello! I can help with careers, studies, and university choices. Ask me anything.</div>
+                    </div>
+                    <div class="chat-input">
+                        <input type="text" id="user-input" placeholder="Ask me anything..." />
+                        <button onclick="sendMessage()">Send</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="site-footer">
+            <p>Created by Хүслэн</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/chatbot.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">StudyAI</div>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/dashboard">Dashboard</a>
+            <a href="/quiz">Quiz</a>
+        </nav>
+    </header>
+    <section class="page-section">
+        <div class="chat-shell">
+            <h2>Your Recommendations</h2>
+            {% set recs = session.get('last_recommendations', []) %}
+            {% if recs %}
+                <div style="display:grid; gap:12px; margin-top:12px;">
+                {% for r in recs %}
+                    <div class="card" style="display:flex; justify-content:space-between; align-items:center;">
+                        <div>
+                            <strong>{{ r.career }}</strong>
+                            <div style="color:#5d6a83; font-size:0.95rem;">Compatibility: {{ r.compatibility }}%</div>
+                        </div>
+                        <div>
+                            <button class="secondary-btn" onclick="saveCareer('{{ r.career }}')">Save</button>
+                        </div>
+                    </div>
+                {% endfor %}
+                </div>
+            {% else %}
+                <div class="card">No recommendations yet. Try taking the <a href="/quiz">quiz</a>.</div>
+            {% endif %}
+        </div>
+    </section>
+    <script>
+        function saveCareer(name){
+            fetch('/savecareer',{
+                method:'POST',
+                headers:{'Content-Type':'application/json'},
+                body: JSON.stringify({career: name})
+            }).then(res=>res.json()).then(j=>{
+                if(j.success) alert('Saved!'); else alert('Please login to save.');
+            });
+        }
+    </script>
+</body>
+</html>
